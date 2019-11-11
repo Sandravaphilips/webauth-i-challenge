@@ -1,5 +1,5 @@
 const express = require('express');
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcryptjs');
 
 const Users = require('./users-model.js');
 
@@ -47,4 +47,4 @@ server.get('/api/users', (req, res) => {
     .catch(err => res.send(err));
 });
 
-
+module.exports = server;
