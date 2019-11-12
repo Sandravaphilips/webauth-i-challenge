@@ -4,7 +4,7 @@ import Form from './Form';
 import { initialFormValues } from "./Register";
 
 
-export default function(props) {
+export default function() {
     const [formValues, setFormValues] = useState(initialFormValues);
 
     function onInputChange(e) {
@@ -15,7 +15,7 @@ export default function(props) {
         e.preventDefault();
         Axios.post('http://localhost:5000/api/login', formValues)
         .then(res => {
-            console.log(res.data);
+            alert(res.data.message);
             sessionStorage.setItem("cookie", res.data.payload);
         })
         .catch(err => console.log(err));

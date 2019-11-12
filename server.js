@@ -5,7 +5,7 @@ const helmet = require('helmet');
 const cors = require('cors');
 
 const UsersRoutes =  require('./users/users-router');
-
+const ApiRoutes = require('./api/api-routes')
 
 const server = express();
 
@@ -34,6 +34,7 @@ server.use(cors());
 server.use(session(sessionConfig));
 
 server.use('/api/restricted', restricted, UsersRoutes);
+server.use('/api', ApiRoutes);
 
 function restricted(req, res, next) {
   if(req.session && req.headers.authorization) {
