@@ -1,16 +1,15 @@
 import axios from "axios";
 
 export default function withAuth() {
-    const username = localStorage.getItem('username');
-    const password = localStorage.getItem('password');
+  const cookie = sessionStorage.getItem('cookie');
   
-    const instance = axios.create({
-      headers: {
-        'Content-Type': 'application/json',
-        username: username,
-        password: password
-      },
-    });
-  
-    return instance;
-  }
+
+  const instance = axios.create({
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: cookie
+    },
+  });
+
+  return instance;
+}

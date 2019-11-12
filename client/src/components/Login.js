@@ -14,7 +14,10 @@ export default function(props) {
     function onFormSubmit(e) {
         e.preventDefault();
         Axios.post('http://localhost:5000/api/login', formValues)
-        .then(res => alert(res.data.message))
+        .then(res => {
+            console.log(res.data);
+            sessionStorage.setItem("cookie", res.data.payload);
+        })
         .catch(err => console.log(err));
         setFormValues(initialFormValues);
     }

@@ -1,5 +1,5 @@
 const express = require('express');
-const bcrypt = require('bcryptjs');
+// const bcrypt = require('bcryptjs');
 
 const Users = require('./users-model.js');
 
@@ -10,7 +10,7 @@ router.get('/users', (req, res) => {
     .then(users => {
       res.json(users);
     })
-    .catch(err => res.send(err));
+    .catch(err => res.json(err));
 });
 
 module.exports = router;
